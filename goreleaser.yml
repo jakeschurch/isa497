@@ -1,0 +1,23 @@
+# .goreleaser.yml
+# Build customization
+build:
+  main: app.go
+  binary: isa497
+  goos:
+    - windows
+    - darwin
+    - linux
+  goarch:
+    - amd64
+# Archive customization
+archive:
+  format: tar.gz
+  format_overrides:
+    - goos: windows
+      format: zip
+  name_template: "{{.Binary}}_{{.Version}}_{{.Os}}-{{.Arch}}"
+  files:
+    - README.md
+    - LICENSE.md
+git:
+  short_hash: true
